@@ -1,5 +1,5 @@
 {
-    "tableros": [
+    "tablerosPrueba": [
         {
             "tablero": [
                 null,
@@ -10,9 +10,70 @@
                 null,
                 null,
                 null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                4,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
                 null
             ],
-            "ID": "0BZZZE87"
+            "ID": "C0W3348D"
+        },
+        {
+            "tablero": [
+                null,
+                -1,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null
+            ],
+            "ID": "PD75ZA52"
         }
     ]
 }

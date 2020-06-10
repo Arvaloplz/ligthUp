@@ -1,6 +1,4 @@
 # 🧠 RESUMEN TAREA AI
-
-fecha de entrega : Mayo 25
 [light Up Aplication Lwink](https://es.puzzle-light-up.com/)
 
 ## 			📄 CONCEPTOS
@@ -24,3 +22,63 @@ fecha de entrega : Mayo 25
 - el algoritmo debe ser capas de iluminar cualquier tablero de N x N
 
 - no puede utilizar el backtracking( no puede generar y descartar cambios )
+
+
+## 👓 ABSTRACCIÓN
+
+### MASTRIZ
+
+
+
+    BLANK ------------------>NONE
+    BLOCK ----------------->  -1
+    0 -----------------> 0
+    1 -----------------> 1
+    2-----------------> 2
+    3-----------------> 3
+    4-----------------> 4
+
+### MASTRIZ  ILUMINACION
+
+	1 -----------> iluminado
+	0 -----------> no iluminado
+	-1 ------------> restringido
+
+## ⚠️RESTRICCIONES  
+
+**restricciones generales:** 
+
+se tendra que iluminar solo los sectores desde la luz hasta los bloques negros
+
+![restricGeneral](imgs/restricGeneral.jpg)
+
+Posibles movimientos
+
+![PosibleMov](imgs/PosibleMov.jpg)
+
+restricciones primordiales: prioridad primera
+
+![PosibleMov](imgs\PosibleMov.jpg)
+
+
+
+![Restriccion1](imgs\Restriccion1.jpg)
+
+Restricciones de posibilidad: prioridad secundaria
+
+![Restriccion2](imgs\Restriccion2.jpg)
+
+
+
+![Restriccion3](imgs\Restriccion3.jpg)
+
+![Restriccion4](imgs\Restriccion4.jpg)
+
+Restricciones de alternativa: prioridad terciaria
+
+![Restriccion5](imgs\Restriccion5.jpg)
+
+![Restriccion6](imgs\Restriccion6.jpg)
+
+![Restriccion7](imgs\Restriccion7.jpg)
+
