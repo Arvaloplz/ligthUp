@@ -14,10 +14,11 @@ def poblarMatris(num_array):
 
 def buscarPrioridadPrimordial():
     for i in range(int(num)):
-        if num_array[i] == 4:
-            agregarLuzPrimordial(i, 1)
         if num_array[i] == 0:
             agregarLuzPrimordial(i, -1)
+        if num_array[i] == 4:
+            agregarLuzPrimordial(i, 1)
+
 
 
 def agregarLuzPrimordial(pos, value):
@@ -77,22 +78,21 @@ def limiteArriba(pos):
 
 def agregarLuz(pos, value):
     if pos >= 0 and pos <= num:  # * solo se agrega luz dentro de los limites
-        print('aca no deve entrar una posicion menor a 0', pos)
         Lvector[pos] = value
-        if value == 1:  # * si no es un valor de restriccion
+        if value == 1:  
             iluminar(pos)
 
 
 def iluminar(pos):
     fila , columna = getCordenadas(pos)
     # la idea es recorrer desde la pos en la fila hasta 0 agregando 1's
-    iluminarArriba(pos - 1, fila)
+    iluminarArriba(pos , fila)
     # la idea es recorrer desde la pos en la fila hasta auxNum  agregando 1's
-    iluminarAbajo(pos - 1, fila)
+    iluminarAbajo(pos , fila)
     # la idea es recorrer desde la pos en la columna hasta auxNum agregando 1's
-    iluminarDerecha(pos - 1, columna)
+    iluminarDerecha(pos , columna)
     # la idea es recorrer desde la pos en la columna hasta 0 agregando 1's
-    iluminarIzquierda(pos - 1, columna)
+    iluminarIzquierda(pos , columna)
 
 def iluminarArriba(pos, fila):  
     if fila < 0:
@@ -100,8 +100,8 @@ def iluminarArriba(pos, fila):
         for i in range(fila, 0, -1):
             print('iluminando arriba')
             if num_array[pos] == None or num_array[pos] == 1:
-                Ivector[pos] = 1
-                print(pos)
+                if Lvector[pos] != -1: 
+                    Ivector[pos] = 1
             else:
                 break
             pos = pos - auxNum
@@ -110,8 +110,8 @@ def iluminarAbajo(pos, fila):
     i = fila
     for i in range(fila, auxNum + 1):
         if num_array[pos] == None or num_array[pos] == 1:
-            print(pos)
-            Ivector[pos] = 1
+            if Lvector[pos] != -1:
+                Ivector[pos] = 1
         else:
             break
         pos = pos + auxNum
@@ -120,8 +120,8 @@ def iluminarIzquierda(pos, columna):
     i = columna
     for i in range(columna, 0, -1):
         if num_array[pos] == None or num_array[pos] == 1:
-            print(i)
-            Ivector[pos] = 1
+            if Lvector[pos] != -1:
+                Ivector[pos] = 1
         else:
             break
         pos = pos - 1
@@ -130,7 +130,8 @@ def iluminarDerecha(pos, columna):
     i = columna
     for i in range(columna, auxNum + 1):
         if num_array[pos] == None or num_array[pos] == 1:
-            Ivector[pos] = 1
+            if Lvector[pos] != -1:
+                Ivector[pos] = 1
         else:
             break
         pos = pos + 1
