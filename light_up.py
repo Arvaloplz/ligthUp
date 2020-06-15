@@ -18,10 +18,11 @@ def buscarPrioridadPrimordial():
             agregarLuzPrimordial(i, -1)
         if num_array[i] == 4:
             agregarLuzPrimordial(i, 1)
+#! si hay un 2 y esta en una esquina
 
 
+def agregarLuzPrimordial(pos, value ):
 
-def agregarLuzPrimordial(pos, value):
     if limiteArriba(pos):
         print('no se agrega a la derecha')
     else:
@@ -40,13 +41,47 @@ def agregarLuzPrimordial(pos, value):
         agregarLuz(pos + auxNum, value)
 
 
-def limiteDerecha(pos):
+def agregarLuzSecundaria(pos, value, numeroElemento):
+    espaciosLibres = {
+        'arriba': False,
+        'abajo': False,
+        'derecha': False,
+        'izquierda': False,
+    }
+
+    espaciosLibresCantidad = 0
+
+    if limiteArriba(pos):
+        print('no se agrega a la derecha')
+    else:
+        espaciosLibres['arriba'] = True
+    if limiteIzquierda(pos):
+        print('no se agrega a la Izquierda')
+    else:
+        espaciosLibres['izquierda'] = True
+    if limiteDerecha(pos):
+        print('no se agrega a la derecha')
+    else:
+        espaciosLibres['derecha'] = True
+    if limiteAbajo(pos):
+        print('no se agrega a la derecha')
+    else:
+        espaciosLibres['abajo'] = True
+
+    for libres in espaciosLibres:
+        if libres:
+            espaciosLibresCantidad = espaciosLibresCantidad + 1
+    if numeroElemento == espaciosLibresCantidad:
+        print('se deberia poner una ampolleta en cada espacio libre segun corresponda')
+
+
+def limiteDerecha(pos):#! abria comprobar como con limite si hay un bloque negro en alguno de los lados que se revisa
     fila, columna = getCordenadas(pos)
     if columna == auxNum:
-        print('si')
+        print('limite derecha si')
         return True
     else:
-        print('no')
+        print('limite derecha no')
         return False
 
 def limiteIzquierda(pos):
@@ -95,22 +130,22 @@ def iluminar(pos):
     iluminarIzquierda(pos , columna)
 
 def iluminarArriba(pos, fila):  
-    if fila < 0:
+    if fila > 0:
         i = fila
         for i in range(fila, 0, -1):
             print('iluminando arriba')
             if num_array[pos] == None or num_array[pos] == 1:
-                if Lvector[pos] != -1: 
                     Ivector[pos] = 1
             else:
                 break
+            print(' se rompio el iluminar arriba por que hay un ',
+                  num_array[pos], 'en la pos', pos + 1)
             pos = pos - auxNum
 
 def iluminarAbajo(pos, fila):  
     i = fila
     for i in range(fila, auxNum + 1):
         if num_array[pos] == None or num_array[pos] == 1:
-            if Lvector[pos] != -1:
                 Ivector[pos] = 1
         else:
             break
@@ -120,7 +155,6 @@ def iluminarIzquierda(pos, columna):
     i = columna
     for i in range(columna, 0, -1):
         if num_array[pos] == None or num_array[pos] == 1:
-            if Lvector[pos] != -1:
                 Ivector[pos] = 1
         else:
             break
@@ -130,7 +164,6 @@ def iluminarDerecha(pos, columna):
     i = columna
     for i in range(columna, auxNum + 1):
         if num_array[pos] == None or num_array[pos] == 1:
-            if Lvector[pos] != -1:
                 Ivector[pos] = 1
         else:
             break
