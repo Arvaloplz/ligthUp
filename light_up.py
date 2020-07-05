@@ -1,6 +1,8 @@
 import numpy as np
 import jsonPy
 
+#? probar
+
 def poblarMatris(num_array):
     print('Ingresa los datos de la matris: ')
     for i in range(int(num)):
@@ -13,108 +15,254 @@ def poblarMatris(num_array):
     return num_array
 
 def buscarPrioridadPrimordial():
+    treses = []
+    doses = []
     for i in range(int(num)):
         if num_array[i] == 0:
-            agregarLuzPrimordial(i, -1)
+            agregarLuzPrimordial(i, -1, 0)
+    for i in range(int(num)):
         if num_array[i] == 4:
-            agregarLuzPrimordial(i, 1)
-#! si hay un 2 y esta en una esquina
+            agregarLuzPrimordial(i, 1, 4)
+    for i in range(int(num)):
+        if num_array[i] == 3:
+            treses.append(i)
+    agregarLuzSecundaria(treses, 1, 3)
+    # for i in range(int(num)):
+    #     if num_array[i] == 2:
+    #         doses.append(i)
+    # agregarLuzSecundaria(doses, 1, 2)
+    # for i in range(int(num)):
+    #     if num_array[i] == 2:
+    #         agregarLuzSecundaria(i, 1, 2)
+    # for i in range(int(num)):
+    #     if num_array[i] == 1:
+    #         agregarLuzSecundaria(i, 1, 1)
 
 
-def agregarLuzPrimordial(pos, value ):
 
+
+def agregarLuzPrimordial(pos, valor, numeroElemento):
+    cantidadLimites = 0
     if limiteArriba(pos):
         print('no se agrega a la derecha')
+        cantidadLimites = cantidadLimites + 1
+        if( 4 - numeroElemento < cantidadLimites ):
+            print('imposible poner ', numeroElemento,'en esa posicón, revisa si ingresaste bien el problema')
+            return False
     else:
-        agregarLuz(pos - auxNum, value)
+        agregarLuz(pos - auxNum, valor)
     if limiteIzquierda(pos):
         print('no se agrega a la Izquierda')
+        cantidadLimites = cantidadLimites + 1
+        if(4 - numeroElemento < cantidadLimites):
+            print('imposible poner ', numeroElemento,'en esa posicón, revisa si ingresaste bien el problema')
+            return False
     else:
-        agregarLuz(pos - 1, value)
+        agregarLuz(pos - 1, valor)
     if limiteDerecha(pos):
+        cantidadLimites = cantidadLimites + 1
         print('no se agrega a la derecha')
+        if(4 - numeroElemento < cantidadLimites):
+            print('imposible poner ', numeroElemento,'en esa posicón, revisa si ingresaste bien el problema')
+            return False
     else:
-        agregarLuz(pos + 1, value)
+        agregarLuz(pos + 1, valor)
     if limiteAbajo(pos):
+        cantidadLimites = cantidadLimites + 1
         print('no se agrega a la derecha')
+        if(4 - numeroElemento < cantidadLimites):
+            print('imposible poner ', numeroElemento,'en esa posicón, revisa si ingresaste bien el problema')
+            return False
     else:
-        agregarLuz(pos + auxNum, value)
+        agregarLuz(pos + auxNum, valor)
 
 
-def agregarLuzSecundaria(pos, value, numeroElemento):
-    espaciosLibres = {
-        'arriba': False,
+def agregarLuzSecundaria(poss, valor, numeroElemento):
+
+    print('🔥 las posiciones donde hay ',numeroElemento ,' son ', poss) 
+    #! hacer un for hasta que todos los 3 tengan sus luces
+    datos = [] # aca voy a tener todos los datos
+
+    for pos in poss:
+        data = componerData(pos,numeroElemento)
+        if data != None:
+            datos.append(data)
+    print(datos)
+
+    print('hacer esto en loop hasta que todas las datas posCompleto true ')
+    # ! dale while con lucesEncontradas , espaciosLibres = encuentraEspacios(pos, numeroElemento) <---
+    complete = len(poss)
+    while(complete != 0):
+        for dato in datos :
+            if(dato['cantidadEspaciosDisponibles'] == dato['lucesDisponibles'] ):
+                print('hay un dato que su cantidad de espacios posibles es igual ')
+                print('sus espacios libres son ', dato['espaciosLibres'])
+                for espacio in dato['espaciosLibres']:
+                    print('se agregara la luz ', espacio)
+                    agregarLuz(espacio, 1)
+                    dato['lucesExistentes'].append(espacio)
+                complete = complete - 1
+            else:
+                print('quizas en otra iteracion ')
+        datos = []
+        for pos in poss:
+            data = componerData(pos, numeroElemento)
+            if data != None:
+                datos.append(data)
+        
+
+    print('loop hasta que todo completo')
+
+    print('luego se debe agregar la luz siempre que las luces por poner sean igual a la cantidad de espacios')
+    print('si la cantidad de espacios disponibles es igual a la cantidad de luces disponibles')
+    print('si hay un espacio comun con otra configuracion poner en esta posicion')
+
+def notComplete(datos):
+    cantidadDatos = len(datos)
+    cantidadCompletados = 0
+    for dato in datos:
+        if (dato['posCompletado']):
+            cantidadCompletados = cantidadCompletados + 1
+    if (cantidadCompletados == cantidadDatos):
+        return False
+    else:
+        return True
+
+
+def componerData(pos, numeroElemento):
+    posCompletado = False
+    lucesEncontradas, espaciosLibres = encuentraEspacios(pos, numeroElemento)  # ? retorna un arreglo
+
+    cantidadLucesEncontradas = len(lucesEncontradas)
+    cantidadEspaciosDisponibles = len(espaciosLibres)
+    print('cantidadLucesEncontradas', cantidadLucesEncontradas)
+    print('cantidadEspaciosDisponibles', cantidadEspaciosDisponibles)
+    if(cantidadEspaciosDisponibles == 0 or cantidadLucesEncontradas == numeroElemento):
+        print('🧠completado')
+        posCompletado = True
+
+    if(cantidadEspaciosDisponibles > numeroElemento):
+            print('imposible saber donde iran las luces, se requiere criterio mas humano')
+            return None
+    else:
+            data = {
+                'lucesExistentes': lucesEncontradas,
+                'espaciosLibres': espaciosLibres,
+                'cantidadEspaciosDisponibles': cantidadEspaciosDisponibles,
+                'cantidadDeLucesEncontradas': cantidadLucesEncontradas,
+                'lucesDisponibles':  numeroElemento - cantidadLucesEncontradas,
+                'posCompletado': posCompletado
+            }
+    if(posCompletado and cantidadEspaciosDisponibles == 1):
+        agregarLuz(espaciosLibres[0], -1)
+    return data
+
+
+
+def encuentraEspacios(pos,numeroElemento):
+    libres=[]
+    ocupado=[]
+    cantidadEspaciosLibres = 0
+    sinLimite = {
+        'arriba' : False,
         'abajo': False,
-        'derecha': False,
         'izquierda': False,
+        'derecha': False,
     }
-
-    espaciosLibresCantidad = 0
-
     if limiteArriba(pos):
-        print('no se agrega a la derecha')
+        print('no se agrega arriba')
     else:
-        espaciosLibres['arriba'] = True
+        sinLimite['arriba'] = True
     if limiteIzquierda(pos):
         print('no se agrega a la Izquierda')
     else:
-        espaciosLibres['izquierda'] = True
+        sinLimite['izquierda'] = True
     if limiteDerecha(pos):
         print('no se agrega a la derecha')
     else:
-        espaciosLibres['derecha'] = True
+        sinLimite['derecha'] = True
     if limiteAbajo(pos):
-        print('no se agrega a la derecha')
+        print('no se agrega abajo')
     else:
-        espaciosLibres['abajo'] = True
+        sinLimite['abajo'] = True
+    for libre in sinLimite:
+        if sinLimite[libre]:
+            cantidadEspaciosLibres = cantidadEspaciosLibres + 1
+    print('cantidad de espacios vacios ',cantidadEspaciosLibres,'\n numero elemento')
+    if numeroElemento != cantidadEspaciosLibres:
+        if(sinLimite['arriba']):
+            print('------------- luz vector valor', Lvector[pos - auxNum])
+            if Lvector[pos - auxNum] == 0 and Ivector[pos - auxNum] == 0:
+                libres.append(pos - auxNum)
+            if Lvector[pos - auxNum] == 1:
+                ocupado.append(pos - auxNum)
+        if(sinLimite['izquierda']):
+            print('------------- luz vector valor', Lvector[pos - 1])
+            if Lvector[pos - 1] == 0 and Ivector[pos - 1] == 0:
+                libres.append(pos - 1)
+            if Lvector[pos - 1] == 1 :
+                ocupado.append(pos - 1)
+        if(sinLimite['derecha']):
+            print('------------- luz vector valor', Lvector[pos + 1])
+            if Lvector[pos + 1] == 0 and Ivector[pos + 1] == 0:
+                libres.append(pos + 1)
+            if Lvector[pos + 1] == 1:
+                print('hay una luz a la derecha')
+                ocupado.append(pos + 1)
+        if(sinLimite['abajo']):
+            print('------------- luz vector valor', Lvector[pos + auxNum])
+            if Lvector[pos + auxNum] == 0 and Ivector[pos + auxNum] == 0:
+                libres.append(pos + auxNum)
+            if Lvector[pos + auxNum] == 1:
+                print('hay una luz a la derecha')
+                ocupado.append(pos+ auxNum)
+    else :
+        print('no podra ser viable, no existe la cantidad exacta de espacios para agregar esa cantidad de luces')
+    return ocupado, libres
 
-    for libres in espaciosLibres:
-        if libres:
-            espaciosLibresCantidad = espaciosLibresCantidad + 1
-    if numeroElemento == espaciosLibresCantidad:
-        print('se deberia poner una ampolleta en cada espacio libre segun corresponda')
-
-
-def limiteDerecha(pos):#! abria comprobar como con limite si hay un bloque negro en alguno de los lados que se revisa
+def limiteDerecha(pos):
+    
     fila, columna = getCordenadas(pos)
-    if columna == auxNum:
-        print('limite derecha si')
+    if columna == auxNum :#! Probar si detecta como limite si hay un bloque o si esta en un limite o bien si esta la casilla iluminada
+        print('limite o bloque derecha si')
         return True
     else:
-        print('limite derecha no')
-        return False
+        print('limite derecha o bloque no')
+        return False 
 
 def limiteIzquierda(pos):
     fila, columna = getCordenadas(pos)
-    if columna == 1:
+    if columna == 1 :
         print('si')
         return True
     else:
         print('no')
         return False
+
 
 def limiteAbajo(pos):
     fila, columna = getCordenadas(pos)
-    if fila == auxNum:
+    if fila == auxNum :
         print('si')
         return True
     else:
         print('no')
         return False
 
-def limiteArriba(pos):
+
+def limiteArriba(pos): 
     fila, columna = getCordenadas(pos)
-    if fila == 1:
+    if fila == 1 :
         print('si')
         return True
     else:
         print('no')
         return False
 
-def agregarLuz(pos, value):
+def agregarLuz(pos, valor):
     if pos >= 0 and pos <= num:  # * solo se agrega luz dentro de los limites
-        Lvector[pos] = value
-        if value == 1:  
+        Lvector[pos] = valor
+        if valor == 1:  
             iluminar(pos)
 
 
