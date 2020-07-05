@@ -17,6 +17,8 @@ def poblarMatris(num_array):
 def buscarPrioridadPrimordial():
     treses = []
     doses = []
+    unos = []
+    
     print(' 1️⃣ Analizando restricciones primordiales: prioridad primera ...')
     for i in range(int(num)):
         if num_array[i] == 0:
@@ -24,16 +26,24 @@ def buscarPrioridadPrimordial():
     for i in range(int(num)):
         if num_array[i] == 4:
             agregarLuzPrimordial(i, 1, 4)
+
     print(' 2️⃣ Analizando restricciones de posibilidad: prioridad secundaria ...')
     for i in range(int(num)):
         if num_array[i] == 3:
             treses.append(i)
     agregarLuzSecundaria(treses, 1, 3)
+
     for i in range(int(num)):
         if num_array[i] == 2:
             doses.append(i)
     
     agregarLuzSecundaria(doses, 1, 2)
+
+    for i in range(int(num)):
+        if num_array[i] == 1:
+            unos.append(i)
+
+    agregarLuzSecundaria(unos, 1, 2)
 
 
 def rellenaEspacios():
