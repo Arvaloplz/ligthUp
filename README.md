@@ -59,7 +59,7 @@ se tendra que iluminar solo los sectores desde la luz hasta los bloques negros
 
 Posibles movimientos
 
-![PosibleMov](imgs\PosibleMov.jpg)
+![PosibleMov](imgs/PosibleMov.jpg)
 
 restricciones primordiales: prioridad primera
 
