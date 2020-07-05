@@ -81,7 +81,7 @@ Restricciones de posibilidad: prioridad secundaria
 
 ![Restriccion4](imgs/Restriccion4.jpg)
 
-Restricciones de alternativa: prioridad terciaria
+Condiciones especificas: prioridad secundaria 
 
 ![Restriccion5](imgs/Restriccion5.jpg)
 
