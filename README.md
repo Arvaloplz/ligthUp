@@ -55,7 +55,7 @@
 
 se tendra que iluminar solo los sectores desde la luz hasta los bloques negros
 
-![restricGeneral](imgs\restricGeneral.jpg)
+![restricGeneral](imgs/restricGeneral.jpg)
 
 Posibles movimientos
 
@@ -65,27 +65,27 @@ restricciones primordiales: prioridad primera
 
 
 
-![PosibleMov](imgs\PosibleMov.jpg)
+![PosibleMov](imgs/PosibleMov.jpg)
 
-![Restriccion1](imgs\Restriccion1.jpg)
+![Restriccion1](imgs/Restriccion1.jpg)
 
 
 
 Restricciones de posibilidad: prioridad secundaria
 
-![Restriccion2](imgs\Restriccion2.jpg)
+![Restriccion2](imgs/Restriccion2.jpg)
 
 
 
-![Restriccion3](imgs\Restriccion3.jpg)
+![Restriccion3](imgs/Restriccion3.jpg)
 
-![Restriccion4](imgs\Restriccion4.jpg)
+![Restriccion4](imgs/Restriccion4.jpg)
 
 Restricciones de alternativa: prioridad terciaria
 
-![Restriccion5](imgs\Restriccion5.jpg)
+![Restriccion5](imgs/Restriccion5.jpg)
 
-![Restriccion6](imgs\Restriccion6.jpg)
+![Restriccion6](imgs/Restriccion6.jpg)
 
-![Restriccion7](imgs\Restriccion7.jpg)
+![Restriccion7](imgs/Restriccion7.jpg)
 
