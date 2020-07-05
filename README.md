@@ -28,21 +28,26 @@
 
 ### MASTRIZ
 
-
-
-    BLANK ------------------>NONE
-    BLOCK ----------------->  -1
-    0 -----------------> 0
-    1 -----------------> 1
+    BLANK --------------->NONE
+    BLOCK ------------>-1
+    0 ----------------> 0
+    1 ----------------> 1
     2-----------------> 2
     3-----------------> 3
     4-----------------> 4
 
-### MASTRIZ  ILUMINACION
+### MASTRIZ LUZ
 
 	1 -----------> iluminado
 	0 -----------> no iluminado
 	-1 ------------> restringido
+
+### MARTRIZ ILUMINACION
+
+    se marca las casillas que se iluminan
+    1 ----------------> iluminado
+    0  ----------------> no iluminado
+
 
 ## ⚠️RESTRICCIONES  
 
@@ -50,7 +55,7 @@
 
 se tendra que iluminar solo los sectores desde la luz hasta los bloques negros
 
-![restricGeneral](imgs/restricGeneral.jpg)
+![restricGeneral](imgs\restricGeneral.jpg)
 
 Posibles movimientos
 
@@ -58,11 +63,13 @@ Posibles movimientos
 
 restricciones primordiales: prioridad primera
 
+
+
 ![PosibleMov](imgs\PosibleMov.jpg)
 
-
-
 ![Restriccion1](imgs\Restriccion1.jpg)
+
+
 
 Restricciones de posibilidad: prioridad secundaria
 

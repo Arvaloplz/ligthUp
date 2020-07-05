@@ -27,10 +27,10 @@ def buscarPrioridadPrimordial():
         if num_array[i] == 3:
             treses.append(i)
     agregarLuzSecundaria(treses, 1, 3)
-    # for i in range(int(num)):
-    #     if num_array[i] == 2:
-    #         doses.append(i)
-    # agregarLuzSecundaria(doses, 1, 2)
+    for i in range(int(num)):
+        if num_array[i] == 2:
+            doses.append(i)
+    agregarLuzSecundaria(doses, 1, 2)
     # for i in range(int(num)):
     #     if num_array[i] == 2:
     #         agregarLuzSecundaria(i, 1, 2)
@@ -80,7 +80,7 @@ def agregarLuzPrimordial(pos, valor, numeroElemento):
 def agregarLuzSecundaria(poss, valor, numeroElemento):
 
     print('🔥 las posiciones donde hay ',numeroElemento ,' son ', poss) 
-    #! hacer un for hasta que todos los 3 tengan sus luces
+
     datos = [] # aca voy a tener todos los datos
 
     for pos in poss:
@@ -90,7 +90,7 @@ def agregarLuzSecundaria(poss, valor, numeroElemento):
     print(datos)
 
     print('hacer esto en loop hasta que todas las datas posCompleto true ')
-    # ! dale while con lucesEncontradas , espaciosLibres = encuentraEspacios(pos, numeroElemento) <---
+
     complete = len(poss)
     while(complete != 0):
         for dato in datos :
