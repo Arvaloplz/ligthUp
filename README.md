@@ -1,5 +1,5 @@
 # 🧠 RESUMEN TAREA AI
-[light Up Aplication Lwink](https://es.puzzle-light-up.com/)
+[light Up Aplication Link](https://es.puzzle-light-up.com/)
 
 ## 			📄 CONCEPTOS
 
