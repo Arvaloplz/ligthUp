@@ -14,19 +14,39 @@
 **Detalles de la implementación**: 
 
 - el algoritmo debe replicar el comportamiento de una persona.
-
 - la agregación de una ampolleta no puede ser modificada,cambiada o eliminada una vez puesta
-
 - deben aplicarse reglas
-
 - el algoritmo debe ser capas de iluminar cualquier tablero de N x N
-
 - no puede utilizar el backtracking( no puede generar y descartar cambios )
+
+------
+
 
 
 ## 👓 ABSTRACCIÓN
 
-### MASTRIZ
+#### PROBLEMA
+
+```
+MATRIS largo [ N X N ] --------------- > VECTOR  largo [ N ^2 ] 
+
+N ---------- > auxNum
+pos -------- > posición
+```
+
+
+
+#### NUESTRAS MATRICES SON VECTORES  ¿ como operamos la posición en nuestros valores?
+
+
+
+|   🔼 ARRIBA   |   🔽 ABAJO    | ◀️ IZQUIERDA | ▶️ DERECHA |
+| :----------: | :----------: | :---------: | :-------: |
+| pos - auxNum | pos + auxNum |   pos - 1   |  pos +1   |
+
+
+
+### VECTOR  OBJETIVO
 
     BLANK --------------->NONE
     BLOCK ------------>-1
@@ -36,24 +56,29 @@
     3-----------------> 3
     4-----------------> 4
 
-### MASTRIZ LUZ
+### VECTOR LUZ
 
-	1 -----------> iluminado
+	1 -----------> iluminado (casillas tambien)
 	0 -----------> no iluminado
 	-1 ------------> restringido
 
-### MARTRIZ ILUMINACION
+### VECTOR ILUMINACION
 
-    se marca las casillas que se iluminan
+    
     1 ----------------> iluminado
     0  ----------------> no iluminado
+
+
+
+------
+
 
 
 ## ⚠️RESTRICCIONES  
 
 **restricciones generales:** 
 
-se tendra que iluminar solo los sectores desde la luz hasta los bloques negros
+se tendrá que iluminar solo los sectores desde la luz hasta los bloques negros
 
 ![restricGeneral](imgs/restricGeneral.jpg)
 
@@ -81,7 +106,11 @@ Restricciones de posibilidad: prioridad secundaria
 
 ![Restriccion4](imgs/Restriccion4.jpg)
 
+<<<<<<< HEAD
 Condiciones especificas: prioridad secundaria 
+=======
+Restricciones de alternativa: prioridad scundarias
+>>>>>>> definitivo final
 
 ![Restriccion5](imgs/Restriccion5.jpg)
 
