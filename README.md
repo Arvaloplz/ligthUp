@@ -106,11 +106,7 @@ Restricciones de posibilidad: prioridad secundaria
 
 ![Restriccion4](imgs/Restriccion4.jpg)
 
-<<<<<<< HEAD
 Condiciones especificas: prioridad secundaria 
-=======
-Restricciones de alternativa: prioridad scundarias
->>>>>>> definitivo final
 
 ![Restriccion5](imgs/Restriccion5.jpg)
 
